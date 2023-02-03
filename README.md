@@ -305,6 +305,44 @@ const deleteOne = await prisma.user.delete({
 })
 ```
 
+### READ
+
+```ts
+// * READ
+// * find all users
+const findUsers = await prisma.user.findMany()
+
+// * find one user by an unique field (email)
+const findUser = await prisma.user.findUnique({
+  where: {
+    email: 'pam@paper.com',
+  },
+})
+
+// * find user by multiple unique fields that we specified
+// ? @@unique([age, name])
+const findUserByMultipleUniqueFields = await prisma.user.findUnique({
+  where: {
+    age_name: {
+      age: 26,
+      name: 'Pam',
+    },
+  },
+})
+
+// * find users, sort and limit results
+const findSortAndLimitResults = await prisma.user.findMany({
+  take: 2, // limit
+  skip: 1, // skip
+  orderBy: {
+    age: 'desc', // sort
+  },
+})
+
+// ? findFirst - find a user by any field that is not unique
+// ? distinct - return only distinct results (only first occurence of each result with a particular field)
+```
+
 ## Resources
 
 - [Prisma Docs](https://www.prisma.io/docs/)
