@@ -93,24 +93,53 @@ async function main() {
   //   },
   // })
 
+  // * CONNECT, DISCONNECT, SET
+  // const connect = await prisma.user.update({
+  //   where: {
+  //     email: 'pam@paper.com',
+  //   },
+
+  //   data: {
+  //     userPreference: {
+  //       connect: {
+  //         id: '9c7c2634-5cab-428d-8ca8-0db26bc3c684',  // ? userPreferenceId from pam
+  //       },
+  //     },
+  //   },
+  // })
+
+  // const disconnect = await prisma.user.update({
+  //   where: {
+  //     email: 'pam@paper.com',
+  //   },
+
+  //   data: {
+  //     userPreference: {
+  //       disconnect: true, // ? now pam's userPreference is null
+  //     },
+  //   },
+  // })
+
   // ``````````````````````````````````````````````
   // console.log('updateOne', updateOne)
   // console.log('updateMany', updateMany)
+  // console.log('connect', connect)
+  // console.log('disconnect', disconnect)
 
   // ----------------------------------------------
 
   // * DELETE
-  // DELETE ALL
+  // * delete all
   // const user = await prisma.user.deleteMany()
 
-  // DELETE ONE OR MORE
+  // * delete many that match a condition
   // const user = await prisma.user.deleteMany({
   //   where: {
-  //     name: 'Michael',
+  //     age: { gt: 40 },
   //   },
   // })
 
-  // DELETE ONE
+  // * delete one
   // You need a unique identifier to delete one (you can setup a unique identifier in the schema.prisma file by adding @unique to the field)
   // const user = await prisma.user.delete({
   //   where: {
