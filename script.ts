@@ -77,6 +77,7 @@ async function main() {
   //   data: {
   //     age: {
   //       increment: 1,
+  // ? increment, decrement, multiply, divide, append, prepend, delete, remove, disconnect, connect, set
   //     },
   //   },
   // })
