@@ -130,10 +130,10 @@ async function main() {
 
   // * DELETE
   // * delete all
-  // const user = await prisma.user.deleteMany()
+  // const deleteAll = await prisma.user.deleteMany()
 
   // * delete many that match a condition
-  // const user = await prisma.user.deleteMany({
+  // const deleteAllUsersAged40Plus = await prisma.user.deleteMany({
   //   where: {
   //     age: { gt: 40 },
   //   },
@@ -141,11 +141,17 @@ async function main() {
 
   // * delete one
   // You need a unique identifier to delete one (you can setup a unique identifier in the schema.prisma file by adding @unique to the field)
-  // const user = await prisma.user.delete({
+  // const deleteOne = await prisma.user.delete({
   //   where: {
-  //     id: 2,
+  //     email: 'pam@paper.com',
   //   },
   // })
+
+  // ``````````````````````````````````````````````
+
+  // console.log('deleteAll', deleteAll)
+  // console.log('deleteAllUsersAged40Plus', deleteAllUsersAged40Plus)
+  // console.log('deleteOne', deleteOne)
 
   // ---------------------------------------------
 
