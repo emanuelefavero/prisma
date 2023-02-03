@@ -12,7 +12,7 @@ async function main() {
   // ! For Testing - delete all users before (only use for this example)
   await prisma.user.deleteMany()
 
-  // -----------------------------------------------
+  // ---------------------------------------------
 
   // * CREATE
   const createUser = await prisma.user.create({
@@ -41,11 +41,6 @@ async function main() {
     },
   })
 
-  console.log('createUser', createUser)
-  // { name: 'Pam', userPreference: { id: 1 } }
-
-  // ```````````````````````````````````````````````
-
   const createUsers = await prisma.user.createMany({
     data: [
       {
@@ -63,6 +58,10 @@ async function main() {
     // ? You can't use include or select with createMany
   })
 
+  // ``````````````````````````````````````````````
+
+  console.log('createUser', createUser)
+  // { name: 'Pam', userPreference: { id: 1 } }
   console.log('createUsers', createUsers)
   // { count: 2 }
 
@@ -80,7 +79,7 @@ async function main() {
   //   },
   // })
 
-  // -----------------------------------------------
+  // ----------------------------------------------
 
   // * DELETE
   // DELETE ALL
@@ -101,22 +100,47 @@ async function main() {
   //   },
   // })
 
-  // -----------------------------------------------
+  // ---------------------------------------------
 
   // * READ
-  // READ ALL
-  // const user = await prisma.user.findMany()
+  // * find all users
+  const findUsers = await prisma.user.findMany()
 
-  // READ ONE (and only show the name)
-  // const user = await prisma.user.findMany({
-  //   where: {
-  //     name: 'Michael',
-  //   },
+  // * find one user by an unique field (email)
+  const findUser = await prisma.user.findUnique({
+    where: {
+      email: 'pam@paper.com',
+    },
+  })
 
-  //   select: {
-  //     name: true,
-  //   },
-  // })
+  // * find user by multiple unique fields that we specified
+  // ? @@unique([age, name])
+  const findUserByMultipleUniqueFields = await prisma.user.findUnique({
+    where: {
+      age_name: {
+        age: 26,
+        name: 'Pam',
+      },
+    },
+  })
+
+  const findSortAndLimitResults = await prisma.user.findMany({
+    take: 2, // limit
+    skip: 1, // skip
+    orderBy: {
+      age: 'desc', // sort
+    },
+  })
+
+  // ? findFirst - find a user by any field that is not unique
+  // ? distinct - return only distinct results (only first occurence of each result with a particular field)
+
+  // ````````````````````````````````````````````
+
+  console.log('findUsers', findUsers)
+  console.log('findUser', findUser)
+  console.log('findUserByMultipleUniqueFields', findUserByMultipleUniqueFields)
+  console.log('findSortAndLimitResults', findSortAndLimitResults)
 }
 
 // ===============================================
