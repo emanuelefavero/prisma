@@ -282,6 +282,29 @@ const disconnect = await prisma.user.update({
 })
 ```
 
+### DELETE
+
+```ts
+// * DELETE
+// * delete all
+const deleteAll = await prisma.user.deleteMany()
+
+// * delete many that match a condition
+const deleteAllUsersAged40Plus = await prisma.user.deleteMany({
+  where: {
+    age: { gt: 40 },
+  },
+})
+
+// * delete one
+// You need a unique identifier to delete one (you can setup a unique identifier in the schema.prisma file by adding @unique to the field)
+const deleteOne = await prisma.user.delete({
+  where: {
+    email: 'pam@paper.com',
+  },
+})
+```
+
 ## Resources
 
 - [Prisma Docs](https://www.prisma.io/docs/)
