@@ -343,6 +343,59 @@ const findSortAndLimitResults = await prisma.user.findMany({
 // ? distinct - return only distinct results (only first occurence of each result with a particular field)
 ```
 
+## **FILTERS**
+
+```ts
+// * FILTERS
+// * not
+const notFilter = await prisma.user.findMany({
+  where: {
+    name: { not: 'Pam' },
+  },
+})
+
+// * in, notIn
+const inFilter = await prisma.user.findMany({
+  where: {
+    name: { in: ['Pam', 'Dwight'] },
+  },
+})
+
+// * lt, lte, gt, gte
+const ltFilter = await prisma.user.findMany({
+  where: {
+    age: { lt: 30 },
+  },
+})
+
+// * contains, startsWith, endsWith
+const containsFilter = await prisma.user.findMany({
+  where: {
+    name: { contains: 'a' },
+  },
+})
+
+// * AND, OR, NOT
+const andFilter = await prisma.user.findMany({
+  where: {
+    AND: [{ name: 'Pam' }, { age: { lt: 30 } }],
+  },
+})
+
+// ARRAY FILTERING
+// * some, none, every
+// ! hypothetical example
+// const someFilter = await prisma.user.findMany({
+//   where: {
+//     posts: {
+//       some: {
+//         title: 'Hello World',
+//       },
+//     },
+//   },
+// })
+```
+
 ## Resources
 
 - [Prisma Docs](https://www.prisma.io/docs/)

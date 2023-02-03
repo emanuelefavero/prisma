@@ -201,7 +201,7 @@ async function main() {
 
   // ---------------------------------------------
 
-  // ADVANCED FILTERING
+  // * FILTERS
   // * not
   const notFilter = await prisma.user.findMany({
     where: {
