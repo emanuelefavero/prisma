@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Schemas models
+model User {
+  // every schema model in prisma needs an id
+  // @id tells prisma that this is the primary key (unique identifier for this model)
+  id    String @id @default(uuid())
+  // id          Int     @id @default(autoincrement())
+  name  String
+  age   Int
+  role  Role   @default(BASIC) // ? role field is a custom enum (useful for determining if user is admin or not)
+  // isAdmin Boolean @default(false) // ? you can also use a boolean field for this
+  email String @unique
+  // largeNumber BigInt
+  // preferences Json // json data type (db has to support it)
+  // blob        Bytes
+  // unsupported Unsupported("unsupported") // you can add unsupported types
+
+  // * relations - one to many (one user can have many posts)
+  posts          Post[] // array of posts
+  userPreference UserPreference? // ? means optional
+
+  // ? BLOCK LEVEL ATTRIBUTE
+  @@unique([age, name]) // now we cannot have two users with the same age and name
+  @@index([email]) // index this field for faster queries when filtering and sorting
+}
+
+model UserPreference {
+  id String @id @default(uuid())
+
+  // * relations - one to one (one user can have one user preference)
+  emailUpdates Boolean @default(true)
+  user         User    @relation(fields: [userId], references: [id])
+  userId       String  @unique // one to one relation needs a unique field
+}
+
+model Post {
+  id            String   @id @default(uuid())
+  title         String
+  averageRating Float
+  preciseRating Decimal // precise decimal numbers
+  createdAt     DateTime @default(now()) // when field is created it will be set to the current date
+  updatedAt     DateTime @updatedAt // automatically updates this Date field when the model is updated
+
+  // * relations
+  author     User       @relation(fields: [authorId], references: [id])
+  authorId   String
+  categories Category[] // * many to many
+}
+
+model Category {
+  id    String @id @default(uuid())
+  name  String @unique
+  posts Post[] // * many to many
+}
+
+// * enums - custom data types, useful for defining roles
+enum Role {
+  BASIC
+  ADMIN
+}
