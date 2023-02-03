@@ -115,7 +115,7 @@ npm i @prisma/client
 
 ## Use Prisma Client
 
-- create a `prisma.ts` or `script.ts` file or any file you want to use Prisma in
+- create a `prisma.ts` or any file you want to use Prisma in
 
 - import the client
 

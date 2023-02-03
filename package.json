@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon script.ts"
+    "dev": "nodemon prisma.ts"
   },
   "keywords": [],
   "author": "Emanuele Favero",
