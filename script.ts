@@ -69,15 +69,31 @@ async function main() {
 
   // * UPDATE
   // UPDATE ONE
-  // const user = await prisma.user.update({
+  // const updateOne = await prisma.user.update({
   //   where: {
-  //     id: 2,
+  //     email: 'michael@paper.com',
   //   },
 
   //   data: {
-  //     name: 'Jim',
+  //     email: 'ryan@paper.com',
+  //     name: 'Ryan',
   //   },
   // })
+
+  // UPDATE MANY
+  // const updateMany = await prisma.user.updateMany({
+  //   where: {
+  //     age: { gt: 40 },
+  //   },
+
+  //   data: {
+  //     email: '...@paper.com',
+  //   },
+  // })
+
+  // ``````````````````````````````````````````````
+  // console.log('updateOne', updateOne)
+  // console.log('updateMany', updateMany)
 
   // ----------------------------------------------
 
