@@ -124,6 +124,7 @@ async function main() {
     },
   })
 
+  // * find users, sort and limit results
   const findSortAndLimitResults = await prisma.user.findMany({
     take: 2, // limit
     skip: 1, // skip
@@ -137,10 +138,72 @@ async function main() {
 
   // ````````````````````````````````````````````
 
+  // CHECK HOW MANY USERS ARE IN THE DATABASE
+  // you can also use this to check how many results you get from a query
+  console.log('Users length', findUsers.length)
+
   console.log('findUsers', findUsers)
   console.log('findUser', findUser)
   console.log('findUserByMultipleUniqueFields', findUserByMultipleUniqueFields)
   console.log('findSortAndLimitResults', findSortAndLimitResults)
+
+  // ---------------------------------------------
+
+  // ADVANCED FILTERING
+  // * not
+  const notFilter = await prisma.user.findMany({
+    where: {
+      name: { not: 'Pam' },
+    },
+  })
+
+  // * in, notIn
+  const inFilter = await prisma.user.findMany({
+    where: {
+      name: { in: ['Pam', 'Dwight'] },
+    },
+  })
+
+  // * lt, lte, gt, gte
+  const ltFilter = await prisma.user.findMany({
+    where: {
+      age: { lt: 30 },
+    },
+  })
+
+  // * contains, startsWith, endsWith
+  const containsFilter = await prisma.user.findMany({
+    where: {
+      name: { contains: 'a' },
+    },
+  })
+
+  // * AND, OR, NOT
+  const andFilter = await prisma.user.findMany({
+    where: {
+      AND: [{ name: 'Pam' }, { age: { lt: 30 } }],
+    },
+  })
+
+  // ARRAY FILTERING
+  // * some, none, every
+  // ! hypothetical example
+  // const someFilter = await prisma.user.findMany({
+  //   where: {
+  //     posts: {
+  //       some: {
+  //         title: 'Hello World',
+  //       },
+  //     },
+  //   },
+  // })
+
+  // ````````````````````````````````````````````
+  console.log('notFilter', notFilter)
+  console.log('inFilter', inFilter)
+  console.log('ltFilter', ltFilter)
+  console.log('containsFilter', containsFilter)
+  console.log('andFilter', andFilter)
 }
 
 // ===============================================
