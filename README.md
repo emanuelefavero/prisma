@@ -5,6 +5,21 @@ Prisma is a database toolkit that makes it easy to query, migrate and model your
 
 > Prisma can use any database, but this cheat sheet is focused on PostgreSQL (_Note: Very little would change with a different database, that's the magic of Prisma_)
 
+## Table of Contents
+
+- [Prisma](#prisma)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Initialize Prisma](#initialize-prisma)
+  - [Setup a Database](#setup-a-database)
+    - [\*Prisma VS Code Extension](#prisma-vs-code-extension)
+  - [Define your Database Schema](#define-your-database-schema)
+  - [Initialize your database](#initialize-your-database)
+  - [Install Prisma Client](#install-prisma-client)
+  - [Use Prisma Client](#use-prisma-client)
+  - [Resources](#resources)
+  - [License](#license)
+
 ## Installation
 
 - setup a new project with `npm init -y`
@@ -14,7 +29,7 @@ Prisma is a database toolkit that makes it easy to query, migrate and model your
 >
 > It is also recommended to install `nodemon` for development
 
-### Full Command for a Node Typescript Project
+- Full Command for a Node Typescript Project
 
 ```bash
 npm i -D prisma typescript ts-node @types/node nodemon
