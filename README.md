@@ -156,3 +156,9 @@ main()
 ```
 
 > Note: Check the example project in this repo for prisma client and schema models examples
+
+## Resources
+
+- [Prisma Docs](https://www.prisma.io/docs/)
+- [Prisma Quick Start](https://www.prisma.io/)
+- [Prisma Playground](https://playground.prisma.io/)
