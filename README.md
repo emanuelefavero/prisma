@@ -89,26 +89,13 @@ Add the following to your `settings.json` file to enable this extension for `.pr
 
 ```prisma
 model User {
-id Int @id @default(autoincrement())
-email String @unique
-name String?
-posts Post[]
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-}
-
-model Post {
-id Int @id @default(autoincrement())
-title String
-content String?
-published Boolean @default(false)
-author User @relation(fields: [authorId], references: [id])
-authorId Int
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
+id String @id @default(uuid())
+name String
 }
 
 ```
+
+> Note: uuid is of type String, autoincrement is of type Int
 
 ## Initialize your database
 
@@ -171,6 +158,61 @@ main()
 ```
 
 > Note: Check the example project in this repo for prisma client and schema models examples
+
+## Schema **Models**
+
+- `schema.prisma` file
+
+```prisma
+model User {
+id String @id @default(uuid()) // @id sets the primary key
+// id Int @id @default(autoincrement())
+email String @unique // @unique sets the field as unique
+name String? // ? optional
+createdAt DateTime @default(now()) // * default value (now)
+updatedAt DateTime @updatedAt // * auto update this field on update
+
+posts Post[] // * one user to many posts relation
+
+// ? BLOCK LEVEL ATTRIBUTE
+@@unique([age, name]) // now we cannot have two users with the same age and name
+@@index([email]) // index this field for faster queries when filtering and sorting
+}
+
+model Post {
+id String @id @default(uuid())
+title String
+content String?
+published Boolean @default(false)
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+
+// * one user to many posts relation
+author User @relation(fields: [authorId], references: [id])
+authorId String
+}
+
+```
+
+> Note: uuid is of type String, autoincrement is of type Int
+
+### Enums
+
+- define a custom enum type in your schema
+
+```prisma
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id String @id @default(uuid())
+  role Role @default(USER)
+}
+```
+
+> Note: Enums are useful for determining the role of a user, or the status of a post (draft, published, etc...)
 
 ## **CRUD** Operations
 
