@@ -174,7 +174,7 @@ main()
 
 ## **CRUD** Operations
 
-### Create
+### CREATE
 
 ```ts
 // * CREATE
@@ -219,6 +219,66 @@ const createUsers = await prisma.user.createMany({
   ],
 
   // ? You can't use include or select with createMany
+})
+```
+
+### UPDATE
+
+```ts
+// * UPDATE
+// Update One
+const updateOne = await prisma.user.update({
+  where: {
+    email: 'michael@paper.com',
+  },
+
+  data: {
+    age: {
+      increment: 1, // ? increment, decrement, multiply, divide, append, prepend, delete, remove, disconnect, connect, set
+    },
+  },
+})
+
+// Update Many
+const updateMany = await prisma.user.updateMany({
+  where: {
+    age: { gt: 40 },
+  },
+
+  data: {
+    email: '...@paper.com',
+  },
+})
+```
+
+### CONNECT, DISCONNECT, DELETE
+
+```ts
+// * CONNECT, DISCONNECT, SET
+const connect = await prisma.user.update({
+  where: {
+    email: 'pam@paper.com',
+  },
+
+  data: {
+    userPreference: {
+      connect: {
+        id: '9c7c2634-5cab-428d-8ca8-0db26bc3c684', // ? userPreferenceId from pam
+      },
+    },
+  },
+})
+
+const disconnect = await prisma.user.update({
+  where: {
+    email: 'pam@paper.com',
+  },
+
+  data: {
+    userPreference: {
+      disconnect: true, // ? now pam's userPreference is null
+    },
+  },
 })
 ```
 

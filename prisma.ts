@@ -68,7 +68,7 @@ async function main() {
   // ----------------------------------------------
 
   // * UPDATE
-  // UPDATE ONE
+  // Update One
   // const updateOne = await prisma.user.update({
   //   where: {
   //     email: 'michael@paper.com',
@@ -76,13 +76,12 @@ async function main() {
 
   //   data: {
   //     age: {
-  //       increment: 1,
-  // ? increment, decrement, multiply, divide, append, prepend, delete, remove, disconnect, connect, set
+  //       increment: 1, // ? increment, decrement, multiply, divide, append, prepend, delete, remove, disconnect, connect, set
   //     },
   //   },
   // })
 
-  // UPDATE MANY
+  // Update Many
   // const updateMany = await prisma.user.updateMany({
   //   where: {
   //     age: { gt: 40 },
