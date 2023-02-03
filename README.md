@@ -7,18 +7,24 @@ Prisma is a database toolkit that makes it easy to query, migrate and model your
 
 ## Table of Contents
 
-- [Prisma](#prisma)
-  - [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
+- [Installation](#installation)
   - [Initialize Prisma](#initialize-prisma)
-  - [Setup a Database](#setup-a-database)
-    - [\*Prisma VS Code Extension](#prisma-vs-code-extension)
-  - [Define your Database Schema](#define-your-database-schema)
-  - [Initialize your database](#initialize-your-database)
-  - [Install Prisma Client](#install-prisma-client)
-  - [Use Prisma Client](#use-prisma-client)
-  - [Resources](#resources)
-  - [License](#license)
+- [Setup a Database](#setup-a-database)
+  - [\*Prisma VS Code Extension](#prisma-vs-code-extension)
+- [Define your Database Schema](#define-your-database-schema)
+- [Initialize your database](#initialize-your-database)
+- [Install Prisma Client](#install-prisma-client)
+- [Use Prisma Client](#use-prisma-client)
+- [Schema Models](#schema-models)
+  - [Enums](#enums)
+- [CRUD Operations](#crud-operations)
+  - [CREATE](#create)
+  - [UPDATE](#update)
+  - [CONNECT, DISCONNECT, SET](#connect-disconnect-set)
+  - [DELETE](#delete)
+  - [READ](#read)
+  - [FILTERS](#filters)
+- [Resources](#resources)
 
 ## Installation
 
@@ -293,7 +299,7 @@ const updateMany = await prisma.user.updateMany({
 })
 ```
 
-### CONNECT, DISCONNECT, DELETE
+### CONNECT, DISCONNECT, SET
 
 ```ts
 // * CONNECT, DISCONNECT, SET
@@ -447,3 +453,11 @@ const andFilter = await prisma.user.findMany({
 ## License
 
 - [MIT](LICENSE.md)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+[**Go To Top &nbsp; ⬆️**](#prisma)
