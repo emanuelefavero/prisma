@@ -172,6 +172,56 @@ main()
 
 > Note: Check the example project in this repo for prisma client and schema models examples
 
+## **CRUD** Operations
+
+### Create
+
+```ts
+// * CREATE
+const createUser = await prisma.user.create({
+  data: {
+    name: 'Pam',
+    email: 'pam@paper.com',
+    age: 26,
+
+    // * Create a userPreference object at the same time. (relation)
+    userPreference: {
+      create: {
+        emailUpdates: true,
+      },
+    },
+  },
+
+  // * Include the userPreference object in the response
+  // include: {
+  //   userPreference: true,
+  // },
+
+  // * Only show the name and the id of userPreference in the response
+  select: {
+    name: true,
+    userPreference: { select: { id: true } },
+  },
+})
+
+const createUsers = await prisma.user.createMany({
+  data: [
+    {
+      name: 'Michael',
+      email: 'michael@paper.com',
+      age: 41,
+    },
+    {
+      name: 'Dwight',
+      email: 'dwight@paper.com',
+      age: 35,
+    },
+  ],
+
+  // ? You can't use include or select with createMany
+})
+```
+
 ## Resources
 
 - [Prisma Docs](https://www.prisma.io/docs/)
