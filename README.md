@@ -81,6 +81,12 @@ npx prisma init --datasource-provider postgresql
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA"
 ```
 
+#### IF you already have data in your database
+
+- run `npx db pull` if you already have data in your database and you want to generate the Prisma schema
+
+- add your schema in `schema.prisma`
+
 ### \*Prisma VS Code Extension
 
 Install the [prisma vs-code extension](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma) for syntax highlighting and more
