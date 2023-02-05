@@ -69,7 +69,11 @@ npx prisma init --datasource-provider postgresql
 
 - Setup any database you want to use with Prisma and get the connection string
 
-> Note: I've created a new database with [supabase](https://supabase.com/) which is a firebase-like database service that uses PostgreSQL
+> Note: I've created a new database with [Supabase](https://supabase.com/) which is a firebase-like database service that uses PostgreSQL
+>
+> - Create a new database with [Supabase](https://supabase.com/)
+>
+> - Go to `Project Settings` / `Database` / `Connection string` / `URI` and copy the `URI` string
 
 - Add your database connection URI string to `.env`
 
