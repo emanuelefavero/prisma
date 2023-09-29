@@ -7,24 +7,28 @@ Prisma is a database toolkit that makes it easy to query, migrate and model your
 
 ## Table of Contents
 
-- [Installation](#installation)
-  - [Initialize Prisma](#initialize-prisma)
-- [Setup a Database](#setup-a-database)
-  - [\*Prisma VS Code Extension](#prisma-vs-code-extension)
-- [Define your Database Schema](#define-your-database-schema)
-- [Initialize your database](#initialize-your-database)
-- [Install Prisma Client](#install-prisma-client)
-- [Use Prisma Client](#use-prisma-client)
-- [Schema Models](#schema-models)
-  - [Enums](#enums)
-- [CRUD Operations](#crud-operations)
-  - [CREATE](#create)
-  - [UPDATE](#update)
-  - [CONNECT, DISCONNECT, SET](#connect-disconnect-set)
-  - [DELETE](#delete)
-  - [READ](#read)
-  - [FILTERS](#filters)
-- [Resources](#resources)
+- [Prisma](#prisma)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+    - [Initialize Prisma](#initialize-prisma)
+  - [Setup a Database](#setup-a-database)
+    - [IF you already have data in your database](#if-you-already-have-data-in-your-database)
+    - [\*Prisma VS Code Extension](#prisma-vs-code-extension)
+  - [Define your Database Schema](#define-your-database-schema)
+  - [Initialize your database](#initialize-your-database)
+  - [Install Prisma Client](#install-prisma-client)
+  - [Use Prisma Client](#use-prisma-client)
+  - [Schema **Models**](#schema-models)
+    - [Enums](#enums)
+  - [**CRUD** Operations](#crud-operations)
+    - [CREATE](#create)
+    - [UPDATE](#update)
+    - [CONNECT, DISCONNECT, SET](#connect-disconnect-set)
+    - [DELETE](#delete)
+    - [READ](#read)
+  - [**FILTERS**](#filters)
+  - [Resources](#resources)
+  - [License](#license)
 
 ## Installation
 
@@ -80,6 +84,8 @@ npx prisma init --datasource-provider postgresql
 ```bash
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA"
 ```
+
+> Note: After 2023, you probably need to copy/paste another DATABASE_URL from supabase
 
 #### IF you already have data in your database
 
